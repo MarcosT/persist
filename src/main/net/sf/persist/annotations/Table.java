@@ -15,8 +15,11 @@ import java.lang.annotation.Target;
 public @interface Table {
 
 	/**
+	 * Name of the schema table mapped to the class.
+	 */
+	String schema();
+	/**
 	 * Name of the table mapped to the class.
 	 */
 	String name();
-
 }
