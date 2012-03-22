@@ -273,8 +273,14 @@ public final class TableMapping extends Mapping {
 				.getAnnotation(net.sf.persist.annotations.Table.class);
 
 		if (tableAnnotation != null && !tableAnnotation.name().equals("")) {
+			String schemaTmp = tableAnnotation.schema();
+			
+			if (schemaTmp != null && !schemaTmp.equals("")) {
+				schemaTmp = schema;
+			}
+			
 			// if there's a Table annotation, use it
-			name = checkTableName(metaData, schema, tableAnnotation.name());
+			name = checkTableName(metaData, schemaTmp, tableAnnotation.name());
 
 			// test if the specified table name actually exists
 			if (name == null) {
